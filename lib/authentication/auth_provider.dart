@@ -11,17 +11,23 @@ class AuthProvider with ChangeNotifier {
 
   bool _login = true;
   String? _errorMessage;
-  //
   bool _keepLoggedIn = false;
+   bool _obscurePassword = true;
   User? _user;
+
   bool get keepLoggedIn => _keepLoggedIn;
   User? get user => _user;
-
+ bool get obscurePassword => _obscurePassword;
   bool get login => _login;
   String? get errorMessage => _errorMessage;
 
   void toggle() {
     _login = !_login;
+    notifyListeners();
+  }
+
+   void togglePasswordVisibility() {
+    _obscurePassword = !_obscurePassword;
     notifyListeners();
   }
 

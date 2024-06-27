@@ -87,6 +87,8 @@ class SignUp extends StatelessWidget {
           TextFormField(
             controller: authProvider.passwordController,
             validator: (value) => Validator.validatePassword(value),
+             obscureText: authProvider.obscurePassword,
+
             style: const TextStyle(color: Colors.white),
             decoration: InputDecoration(
               hintText: 'Password',
@@ -106,6 +108,13 @@ class SignUp extends StatelessWidget {
               fillColor: Colors.grey.withOpacity(0.1),
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                  suffixIcon: IconButton(
+                    color: Colors.white,
+                    onPressed: (){
+                authProvider.togglePasswordVisibility();
+              }, icon:Icon(
+                  authProvider.obscurePassword ? Icons.visibility_off : Icons.visibility,
+                ), )
             ),
           ),
           const SizedBox(

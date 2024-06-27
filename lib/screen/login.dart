@@ -71,6 +71,7 @@ class _LoginState extends State<Login> {
           TextFormField(
             controller: authProvider.passwordController,
             validator: (value) => Validator.validatePassword(value),
+            obscureText: authProvider.obscurePassword,
             decoration: InputDecoration(
               hintText: 'Password',
               hintStyle: const TextStyle(
@@ -88,7 +89,13 @@ class _LoginState extends State<Login> {
               filled: true,
               fillColor: const Color(0xFFECCB45),
               contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+              suffixIcon: IconButton(onPressed: (){
+                authProvider.togglePasswordVisibility();
+              }, icon:Icon(
+                  authProvider.obscurePassword ? Icons.visibility_off : Icons.visibility,
+                ), )
             ),
+            
           ),
            const SizedBox(
             height: 16,
