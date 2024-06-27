@@ -9,10 +9,9 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthProvider>(context);
-    final formKey = GlobalKey<FormState>();
 
     return Form(
-      key: formKey,
+      key:authProvider.formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -122,8 +121,9 @@ class SignUp extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              if (formKey.currentState!.validate()) {
+              if (authProvider.formKey.currentState!.validate()) {
                 authProvider.handleSignup(context);
+                
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('sign up failed...')));

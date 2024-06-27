@@ -64,8 +64,12 @@ GlobalKey<FormState> formKey = GlobalKey<FormState>();
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
               builder: (context) => HomePage(),
+              
             ),
+            
           );
+          emailController.clear();
+          passwordController.clear();
         } else {
           final errorMsg = AuthExceptionHandler.generateExpetionMessage(status);
           ScaffoldMessenger.of(context).showSnackBar(
@@ -92,8 +96,13 @@ GlobalKey<FormState> formKey = GlobalKey<FormState>();
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
               builder: (context) => HomePage(),
+              
             ),
           );
+          
+          nameController.clear();
+           emailController.clear();
+          passwordController.clear();
         } else {
           final errorMsg = AuthExceptionHandler.generateExpetionMessage(status);
           ScaffoldMessenger.of(context).showSnackBar(
